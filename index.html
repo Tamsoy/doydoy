@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-yes, .btn-no {
+            flex: 1;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-yes {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-no {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        /* Style for the image */
+        .image-container {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message">I'm Sorry na Doy huhu migo na ta ha?</div>
+        <div class="btn-wrapper">
+            <button class="btn-yes" onclick="showThankYou()">Okay</button>
+            <button class="btn-no">Di ko</button>
+        </div>
+        <div class="image-container">
+            <img class="image" src="giphy.gif" alt="Image">
+        </div>
+    </div>
+
+    <script>
+        function getRandomPosition(element) {
+            const bodyRect = document.body.getBoundingClientRect();
+            const btnRect = element.getBoundingClientRect();
+            const maxX = bodyRect.width - btnRect.width;
+            const maxY = bodyRect.height - btnRect.height;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            return { x: randomX, y: randomY };
+        }
+
+        function showThankYou() {
+        // Create the "Thank You" text element
+        const thankYouText = document.createElement("div");
+        thankYouText.textContent = "yiee smile na diha cute raba kayka HAHAHAHAH";
+        thankYouText.classList.add("thank-you");
+        document.body.appendChild(thankYouText);
+
+        // Create the image element
+        const image = document.createElement("img");
+        image.src = "happy.gif"; // Replace "path/to/your/image.jpg" with the actual path to your image
+        image.classList.add("thank-you-image");
+        document.body.appendChild(image);
+    }
+
+        const noButton = document.querySelector(".btn-no");
+        noButton.addEventListener("mouseenter", () => {
+            const newPosition = getRandomPosition(noButton);
+            noButton.style.position = "absolute";
+            noButton.style.left = newPosition.x + "px";
+            noButton.style.top = newPosition.y + "px";
+        });
+    </script>
+</body>
+</html>
